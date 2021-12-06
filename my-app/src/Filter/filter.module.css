@@ -1,0 +1,10 @@
+.filter {
+  width: 400px;
+  display: flex;
+  text-align: center;
+  margin-left: 50px;
+}
+
+.label {
+  margin-right: 10px;
+}
