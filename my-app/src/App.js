@@ -15,13 +15,15 @@ export default class App extends Component {
     ],
     filter: '',
   };
+  searchName = value => {
+    return this.state.contacts.find(
+      item => item.name.toUpperCase() === value.toUpperCase(),
+    );
+  };
 
   addContact = e => {
-    const searchName = this.state.contacts
-      .map(item => item.name)
-      .includes(e.name);
-
-    if (searchName) {
+    const { name } = e;
+    if (this.searchName(name)) {
       alert(`${e.name} is already in contacts`);
     } else {
       const contact = {
@@ -35,8 +37,8 @@ export default class App extends Component {
     }
   };
 
-  changeFilter = filter => {
-    this.setState({ filter });
+  changeFilter = value => {
+    this.setState({filter: value});
   };
 
   getVisibleContacts = () => {
