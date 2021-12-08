@@ -38,7 +38,7 @@ export default class App extends Component {
   };
 
   changeFilter = value => {
-    this.setState({filter: value});
+    this.setState({ filter: value });
   };
 
   getVisibleContacts = () => {
@@ -58,17 +58,17 @@ export default class App extends Component {
   };
 
   render() {
-    const { filter } = this.state;
+    const { contacts, filter } = this.state;
 
     const visibleContacts = this.getVisibleContacts();
-
+    // console.log(this.getVisibleContacts());
     return (
       <div className="container">
         <h1 className="title">Phonebook</h1>
 
         <ContactForm onAddContact={this.addContact} />
         <h2 className="title">Contacts</h2>
-        {visibleContacts.length > 1 && (
+        {contacts.length >= 2 && (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
         )}
         {visibleContacts.length > 0 && (
